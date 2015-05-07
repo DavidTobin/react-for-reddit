@@ -1,0 +1,46 @@
+.layout-DefaultLayout
+  > aside, > main
+    display: inline-block
+
+    vertical-align: top
+
+    margin-top: $headerHeight
+
+    height: 100vh
+    max-height: 100vh
+
+    overflow: auto
+
+    transition: width 0.05s
+
+  > aside
+    width: ($sidebarWidth * 0.25)
+
+    text-transform: uppercase
+    text-indent: 20px
+    letter-spacing: 100px
+
+    &:hover, &.sticky
+      width: $sidebarWidth
+
+      text-transform: initial
+      text-indent: initial
+      letter-spacing: inherit
+
+      + main
+        width: 100% - $sidebarWidth
+
+        > aside
+          width: 100% - $sidebarWidth
+
+  > main
+    width: 100% - ($sidebarWidth * 0.25)
+
+    > aside
+      transition: width 0.05s
+
+      width: 100% - ($sidebarWidth * 0.25)
+      height: $actionBarHeight
+
+    > section
+      padding-top: $actionBarHeight + 5px

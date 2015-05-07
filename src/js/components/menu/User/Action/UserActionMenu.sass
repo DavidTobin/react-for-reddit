@@ -1,0 +1,35 @@
+.menu-UserAction
+  ul
+    display: inline-block
+
+    margin-left: 50px
+
+    li
+      display: inline-block
+
+      margin-right: -4px
+
+      a
+        padding: 10px 40px 8px 40px
+
+      &:hover
+        &:before
+          content: attr(data-title)
+
+          position: absolute
+          display: block
+
+          background: rgba(0, 0, 0, 0.75)
+
+          padding: 2px 10px
+
+          z-index: 20
+
+          top: -65%
+
+          margin-left: 20px
+
+          text-align: center
+
+          font-size: $baseFontSize
+          font-family: $lightFont

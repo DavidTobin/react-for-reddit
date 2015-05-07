@@ -1,0 +1,23 @@
+{
+  "name": "Reddit-React-Client",
+  "version": "0.0.0",
+  "authors": [
+    "David TObin"
+  ],
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "modernizr": "~2.8.3",
+    "detectizr": "~2.0.0"
+  }
+}

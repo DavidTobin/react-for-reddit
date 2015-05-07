@@ -1,0 +1,49 @@
+$circleSmall: 30px
+$circleMedium: 60px
+$circleLarge: 120px
+$circleDefault: $circleMedium
+
+.user-KarmaCircle
+  display: inline-block
+
+  border-radius: 100%
+
+  background: $successColor
+  color: $fontColorLight
+
+  height: $circleDefault
+  width: $circleDefault
+
+  text-shadow: 1px 2px 0px $primaryColor
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.35)
+
+  font-weight: bold
+
+  text-align: center
+  vertical-align: middle
+
+  line-height: $circleDefault - 2px
+
+  &.small
+    height: $circleSmall
+    width: $circleSmall
+
+    line-height: $circleSmall - 2px
+
+  &.medium
+    height: $circleMedium
+    width: $circleMedium
+
+    line-height: $circleMedium - 2px
+
+  &.large
+    height: $circleLarge
+    width: $circleLarge
+
+    line-height: $circleLarge - 2px
+
+  &.negative
+    background: $errorColor
+
+  &.neutral
+    background: $neutralColor

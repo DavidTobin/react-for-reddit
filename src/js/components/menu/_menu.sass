@@ -1,0 +1,45 @@
+.menu
+  ul
+    margin: 0
+    padding: 0
+
+    list-style-type: none
+
+    li
+
+      a
+        display: block
+
+        color: $fontColorLight
+        background: lighten($secondaryColor, 5%)
+
+        border-bottom: 2px solid transparent
+
+        transition: background 0.25s, border 0.25s
+
+        cursor: pointer
+
+        padding: 10px
+
+        text-align: center
+
+        font-size: $baseFontSize * 1.1
+        font-family: $lightFont
+
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.85)
+
+        &:hover, &.active
+          background: lighten($secondaryColor, 10%)
+
+          border-bottom: 2px solid $primaryColor
+
+        &:active
+          background: lighten($secondaryColor, 15%)
+
+          border-bottom: 2px solid lighten($primaryColor, 10%)
+
+        &.active
+          font-weight: bold
+
+          &:hover
+            border-bottom: 2px solid lighten($primaryColor, 10%)

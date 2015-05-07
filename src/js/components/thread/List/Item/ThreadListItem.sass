@@ -1,0 +1,33 @@
+.thread-ListItem
+  background: $componentBackground
+
+  padding: 10px
+  margin: 5px 0
+
+  transition: height 0.25s, border 0.25s
+
+  font-family: $lightFont
+
+  border-bottom: 2px solid $primaryColor
+
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.15)
+
+  h1
+    font-size: $baseFontSize * 1.2
+
+    margin: 0
+    padding: 2px 0
+
+  &:hover
+    border-bottom: 2px solid lighten($primaryColor, 10%)
+
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.35)
+
+  &.expand
+    height: $threadHeightExpanded
+
+  a
+    color: $primaryColor
+
+    &:hover
+      font-weight: bold
