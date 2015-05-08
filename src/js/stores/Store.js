@@ -24,7 +24,7 @@ class Store extends EventEmitter {
   }
 
   getAll() {
-    return this.data;
+    return this.data || [];
   }
 
   getById(id) {
@@ -51,6 +51,10 @@ class Store extends EventEmitter {
     this.data.push(data);
 
     this.data = _.uniq(this.data);
+  }
+
+  removeData() {
+    this.data = [];
   }
 }
 

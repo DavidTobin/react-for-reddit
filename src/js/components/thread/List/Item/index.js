@@ -37,7 +37,7 @@ class ThreadListItem extends React.Component {
                 {this.getDate(this.props.thread.created_utc)}
                 &nbsp;by <Link to="home">{this.props.thread.author}</Link>
                 &nbsp;to <Link to="home">/r/{this.props.thread.subreddit}</Link>
-                &nbsp;-
+                &nbsp;-&nbsp;
                 <small><strong>{this.props.thread.num_comments || 0}</strong></small> comments
               </p>
             </div>

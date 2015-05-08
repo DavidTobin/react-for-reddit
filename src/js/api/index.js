@@ -1,4 +1,5 @@
 import ListingsApi from './Listings';
 import ThreadApi from './Thread';
+import CommentApi from './Comment';
 
-export {ListingsApi, ThreadApi};
+export {ListingsApi, ThreadApi, CommentApi};

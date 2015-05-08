@@ -12,7 +12,6 @@ class ThreadImageThumbnailExpandable extends React.Component {
   }
 
   render() {
-    console.log(this.props.children);
     return (
       <aside className="thread-ImageThumbnailExpandable" onClick={this.onClick.bind(this)}>
         <Modal open={this.state.modal}>

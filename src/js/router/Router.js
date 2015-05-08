@@ -3,7 +3,7 @@
 import React from 'react';
 import {default as ReactRouter, Route, DefaultRoute} from 'react-router';
 import {DefaultLayout} from '../layout';
-import {HomePage, ThreadPage} from '../pages';
+import {HomePage, ThreadPage, SubredditPage} from '../pages';
 import {UserSettingsPage} from '../pages/User';
 
 class Router {
@@ -17,7 +17,10 @@ class Router {
         <DefaultRoute name="home" handler={HomePage} />
 
         <Route path="/thread/:id" name="thread" handler={ThreadPage} />
+
         <Route path="/user/settings" name="user.settings" handler={UserSettingsPage} />
+
+        <Route path="/r/:subreddit" name="subreddit" handler={SubredditPage} />
       </Route>
     );
   }
