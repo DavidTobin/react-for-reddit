@@ -15,6 +15,21 @@ class ListingsApi extends Api {
       }
     );
   }
+
+  getBySubreddit(subreddit) {
+    return new Promise(
+      (resolve, reject) => {
+        this.get('/r/' + subreddit)
+          .then(
+            (response) => {
+              resolve({
+                threads: response.data.children
+              });
+            }
+          );
+      }
+    );
+  }
 }
 
 export default new ListingsApi();

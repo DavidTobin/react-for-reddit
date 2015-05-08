@@ -26,8 +26,10 @@ class Router {
   }
 
   run(callback) {
-    ReactRouter.run(this.getRoutes(), (Handler) => {
-      React.render(<Handler />, this.node);
+    ReactRouter.run(this.getRoutes(), (Handler, state) => {
+      let params = state.params;
+
+      React.render(<Handler {...params} />, this.node);
     });
 
     callback();

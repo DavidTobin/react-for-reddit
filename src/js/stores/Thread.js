@@ -16,6 +16,11 @@ class ThreadStore extends Store {
           this.getFrontpage();
           break;
 
+        case ThreadConstants.GET_BY_SUBREDDIT:
+          this.setDataType('subreddit');
+          this.getThreadBySubreddit(payload.subreddit);
+          break;
+
         case ThreadConstants.GET_BY_ID:
           this.getThreadById(payload.id);
           break;
@@ -28,6 +33,20 @@ class ThreadStore extends Store {
     this.emitChange();
 
     ListingsApi.getTop()
+      .then((data) => {
+        this.setData(data.threads);
+
+        this.emitChange();
+      });
+  }
+
+  getThreadBySubreddit(subreddit) {
+    console.log('getThreadBySubreddit', subreddit);
+    // Remove current data
+    this.setData([]);
+    this.emitChange();
+
+    ListingsApi.getBySubreddit(subreddit)
       .then((data) => {
         this.setData(data.threads);
 

@@ -16,7 +16,7 @@ class DefaultLayout extends React.Component {
 
         <main>
           <UserActionBar />
-          <RouteHandler />
+          <RouteHandler {...this.props} />
         </main>
       </section>
     );

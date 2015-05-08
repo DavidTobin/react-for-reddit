@@ -36,7 +36,7 @@ class ThreadListItem extends React.Component {
               <p className="text-muted">
                 {this.getDate(this.props.thread.created_utc)}
                 &nbsp;by <Link to="home">{this.props.thread.author}</Link>
-                &nbsp;to <Link to="home">/r/{this.props.thread.subreddit}</Link>
+                &nbsp;to <Link to="subreddit" params={{subreddit: this.props.thread.subreddit}}>/r/{this.props.thread.subreddit}</Link>
                 &nbsp;-&nbsp;
                 <small><strong>{this.props.thread.num_comments || 0}</strong></small> comments
               </p>
@@ -75,12 +75,15 @@ class ThreadListItem extends React.Component {
   /**
    * Toggles expand mode
    */
-  onClick() {
-    // Open thread page
-    if (this.props.thread.id) {
-      this.context.router.transitionTo('thread', {
-        id: this.props.thread.id
-      });
+  onClick(e) {
+    // Make sure we aren't clicking a link
+    if (e.target.nodeName !== 'A' && e.target.parentNode.nodeName !== 'A') {
+      // Open thread page
+      if (this.props.thread.id) {
+        this.context.router.transitionTo('thread', {
+          id: this.props.thread.id
+        });
+      }
     }
   }
 

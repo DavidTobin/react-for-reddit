@@ -14,6 +14,13 @@ class ThreadActions {
       id
     });
   }
+
+  getBySubreddit(subreddit) {
+    Dispatcher.dispatch({
+      actionType: ThreadConstants.GET_BY_SUBREDDIT,
+      subreddit
+    });
+  }
 }
 
 export default new ThreadActions();

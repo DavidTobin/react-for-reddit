@@ -1,0 +1,24 @@
+.subreddit-Sidebar
+  background: $secondaryColor
+  color: $fontColorLight
+
+  padding: 10px
+  margin: 5px 0 0 0
+
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.35)
+
+  blockquote
+    font-size: $baseFontSize * 0.8
+
+  > blockquote
+    overflow: auto
+
+    max-height: 50vh
+
+  table
+    td, th
+      &:hover
+        background: lighten($secondaryColor, 10%)
+
+        + td, + th
+          background: lighten($secondaryColor, 10%)

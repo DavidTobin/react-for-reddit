@@ -66,7 +66,6 @@ class CommentList extends React.Component {
   }
 
   filterNonComments(comment) {
-    console.log(comment);
     return comment;
   }
 

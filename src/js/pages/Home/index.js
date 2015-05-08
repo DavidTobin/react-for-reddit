@@ -14,7 +14,15 @@ class HomePage extends React.Component {
   render() {
     return (
       <section className="page-Home">
-        <ThreadList type="frontpage" />
+        <div className="container-fluid">
+          <div className="row-fluid">
+            <h1>Frontpage</h1>
+          </div>
+
+          <div className="row-fluid">
+            <ThreadList type="frontpage" />
+          </div>
+        </div>
       </section>
     );
   }
