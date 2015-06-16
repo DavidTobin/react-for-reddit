@@ -8,7 +8,9 @@ class Store extends EventEmitter {
     this.CHANGE_EVENT = 'change';
 
     this.data         = [];
+    this.meta         = {};
     this.dataType     = 'basic';
+    this.refresh      = null;
   }
 
   emitChange() {
@@ -43,6 +45,22 @@ class Store extends EventEmitter {
     this.data = data || [];
   }
 
+  setMeta(meta, item) {
+    if (item) {
+      this.meta[item] = meta;
+    } else {
+      this.meta = meta || {};
+    }
+  }
+
+  getMeta(item) {
+    if (item) {
+      return this.meta[item] || false;
+    } else {
+      return this.meta;
+    }
+  }
+
   setDataType(type) {
     this.dataType = type;
   }
@@ -55,6 +73,20 @@ class Store extends EventEmitter {
 
   removeData() {
     this.data = [];
+  }
+
+  setRefresh(func, args) {
+    this.refresh = (() => {
+      func.apply(this, args);
+
+      this.emitChange();
+    });
+  }
+
+  refresh() {
+    if (this.refresh) {
+      this.refresh();
+    }
   }
 }
 

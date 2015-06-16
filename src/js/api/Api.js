@@ -1,5 +1,6 @@
 import ApiConfig from '../config/api';
 import request from 'superagent';
+import _ from 'lodash';
 
 class API {
   constructor() {
@@ -27,6 +28,12 @@ class API {
   post() {}
   put() {}
   delete() {}
+
+  toQueryParams(queryParams) {
+
+    return _.zip(_.keys(queryParams), _.values(queryParams))
+      .map((param => param.join('=')));
+  }
 
   createApiPath(path) {
     return [this.namespace, path].join('');

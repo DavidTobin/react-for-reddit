@@ -31,12 +31,10 @@ var gulp          = require('gulp'),
 
 function onError(namespace) {
   return function (err) {
-    if (namespace !== 'Babel') {
-      notification.notify({
-        title: [namespace || 'Error'],
-        message: [err.message, err.file + ':' + err.line].join('\n\n')
-      });
-    }
+    notification.notify({
+      title: [namespace || 'Error'],
+      message: [err.message, err.file + ':' + err.line].join('\n\n')
+    });
 
     util.log(util.colors.red('Error'), err.message);
 
@@ -147,12 +145,13 @@ gulp.task('clean', function () {
 });
 
 gulp.task('browserify-babel', function () {
-  var b = browserify({
-    entries: './src/js/app.js',
+  var b = browserify('./src/js/app.js', {
+    paths: ['node_modules/', 'src/js/'],
     debug: true,
     transform: [babelify.configure({
       nonStandard: true,
-      modules: 'common'
+      modules: 'common',
+      sourceRoot: './src/js/'
     })],
   });
 

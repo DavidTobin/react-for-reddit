@@ -2,9 +2,10 @@ import Dispatcher from '../dispatcher';
 import ThreadConstants from '../constants/Thread';
 
 class ThreadActions {
-  getFrontpage() {
+  getFrontpage(params) {
     Dispatcher.dispatch({
-      actionType: ThreadConstants.GET_FRONTPAGE
+      actionType: ThreadConstants.GET_FRONTPAGE,
+      params
     });
   }
 

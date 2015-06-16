@@ -16,6 +16,8 @@ class Router {
       <Route path="/" handler={DefaultLayout}>
         <DefaultRoute name="home" handler={HomePage} />
 
+        <Route path="/new" name="home.new" handler={HomePage} />
+
         <Route path="/thread/:id" name="thread" handler={ThreadPage} />
 
         <Route path="/user/settings" name="user.settings" handler={UserSettingsPage} />

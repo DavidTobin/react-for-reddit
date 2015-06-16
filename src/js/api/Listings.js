@@ -1,14 +1,21 @@
 import Api from './Api';
+import _ from 'lodash';
 
 class ListingsApi extends Api {
-  getTop() {
+  getTop(queryParams = {}) {
+    console.log(queryParams);
+    queryParams = this.toQueryParams(queryParams);
+
     return new Promise(
       (resolve, reject) => {
-        this.get('/top')
+        this.get('/top' + '?' + queryParams.join('&'))
           .then(
             (response) => {
+              let meta = _.omit(response.data, 'children');
+
               resolve({
-                threads: response.data.children
+                threads: response.data.children,
+                meta
               });
             }
           );
@@ -23,7 +30,8 @@ class ListingsApi extends Api {
           .then(
             (response) => {
               resolve({
-                threads: response.data.children
+                threads: response.data.children,
+                meta: _.omit(response.data, 'children')
               });
             }
           );

@@ -31,10 +31,6 @@ class ThreadPage extends React.Component {
         ThreadActions.getById(this.context.router.getCurrentParams().id);
       }
     }
-
-    if (this.state.thread.id) {
-      console.log('Get comments...');
-    }
   }
 
   componentWillUnmount() {
@@ -48,7 +44,7 @@ class ThreadPage extends React.Component {
         <div className="container-fluid">
           <div className="row-fluid">
             <ThreadListItem thread={this.state.thread}>
-              <div>{this.state.thread.body}</div>
+              <img height={400} src={this.state.thread.url + '.jpg'} />
 
               <div className="row">
                 <div className="col-sm-6">
@@ -76,6 +72,8 @@ class ThreadPage extends React.Component {
     this.setState({
       thread: ThreadStore.getById(this.context.router.getCurrentParams().id)
     });
+
+    console.log(this.state);
   }
 }
 

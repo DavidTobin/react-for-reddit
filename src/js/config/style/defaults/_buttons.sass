@@ -1,0 +1,28 @@
+.btn
+  border: 1px solid transparent
+  border-radius: 0px
+
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.35)
+
+  outline: none !important
+
+  &:hover
+    border: 1px solid transparent
+
+  &.btn-primary
+    background: $primaryColor
+    color: $fontColorLight
+
+    &:hover
+      background: lighten($primaryColor, 5%)
+
+  &.btn-error
+    background: $componentBackground
+    color: $errorColor
+
+    text-shadow: none
+
+    border: 1px solid $errorColor
+
+    &:hover
+      background: darken($componentBackground, 5%)

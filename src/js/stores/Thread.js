@@ -13,7 +13,7 @@ class ThreadStore extends Store {
       switch (payload.actionType) {
         case ThreadConstants.GET_FRONTPAGE:
           this.setDataType('frontpage');
-          this.getFrontpage();
+          this.getFrontpage(payload.params);
           break;
 
         case ThreadConstants.GET_BY_SUBREDDIT:
@@ -28,23 +28,36 @@ class ThreadStore extends Store {
     });
   }
 
-  getFrontpage() {
+  getFrontpage(params) {
+    const currentMeta = this.getMeta();
+
     this.setData([]);
     this.emitChange();
 
-    ListingsApi.getTop()
+    this.setRefresh(ThreadApi.getTop, [params]);
+
+    ListingsApi.getTop(params)
       .then((data) => {
         this.setData(data.threads);
+        this.setMeta(data.meta);
+
+        // Set before link to previous after link and vica versa
+        if (data.meta.after) {
+          this.setMeta(currentMeta.after, 'before');
+        } else if (data.meta.before) {
+          this.setMeta(currentMeta.before, 'after');
+        }
 
         this.emitChange();
       });
   }
 
   getThreadBySubreddit(subreddit) {
-    console.log('getThreadBySubreddit', subreddit);
     // Remove current data
     this.setData([]);
     this.emitChange();
+
+    this.setRefresh(ListingsApi.getBySubreddit, [subreddit]);
 
     ListingsApi.getBySubreddit(subreddit)
       .then((data) => {
@@ -55,6 +68,8 @@ class ThreadStore extends Store {
   }
 
   getThreadById(id) {
+    this.setRefresh(ThreadApi.getById, [id]);
+
     ThreadApi.getById(id)
       .then((data) => {
         this.appendData(data.thread);
